@@ -23,5 +23,10 @@ export class MomentService {
     return this.http.post<FormData>(this.apiUrl,formData);
   }
 
+  getMomentz(id:number):Observable<Response<Moment>>{
+    
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Response<Moment>>(url);
+  }
 
 }
