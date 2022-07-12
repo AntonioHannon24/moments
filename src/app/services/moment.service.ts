@@ -4,6 +4,7 @@ import { Observable, observable } from 'rxjs';
 import { Moment } from '../Moment';
 import { environment } from 'src/environments/environment';
 import { Response } from '../Response';
+import { Form } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,20 @@ export class MomentService {
     
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Response<Moment>>(url);
+  }
+
+  removeMoment(id:number){
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url);
+
+
+  }
+
+  updateMoment(id:number , formData:FormData):Observable<FormData>{
+
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<FormData>(url,formData);
+
   }
 
 }
